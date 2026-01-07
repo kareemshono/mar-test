@@ -33,12 +33,7 @@ interface ContactFormProps {
 
 export default function Form({ onSuccess, header }: ContactFormProps) {
    // Formspree state & submit handler
-const formId = process.env.NEXT_PUBLIC_FORM_ID;
-
-if (!formId) {
-  throw new Error("Missing NEXT_PUBLIC_FORM_ID environment variable. Check your .env and Vercel settings.");
-}
-  const [state, formspreeSubmit] = useFormspree(formId);
+  const [state, formspreeSubmit] = useFormspree(process.env.NEXT_PUBLIC_FORM_ID as string)
   const t = useTranslations("contact.form");
 const [showSuccess, setShowSuccess] = useState(false);
  

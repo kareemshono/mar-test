@@ -32,7 +32,7 @@ const Features = () => {
        <ColoredTitle json_key="features" className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl p-5 lg:p-0"/>
 
         <div className=" max-w-2xl lg:max-w-3xl mt-5 text-center">
-          <p className="text-lg lg:text-xl/8   text-gray-600 dark:text-gray-500 font-medium">
+          <p className="text-lg lg:text-xl/8  px-5  text-gray-600 dark:text-gray-500 font-medium">
             {t("subtitle")}
           </p>
         </div>

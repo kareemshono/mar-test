@@ -42,7 +42,7 @@ const FeaturedPartnerCard = (props: Props) => {
                         />
     
                         <div className="relative z-10">
-                          <div className="w-8 h-8 sm:w-20 sm:h-20 mb-6 rounded-2xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 p-4 overflow-hidden shadow-md">
+                          <div className="w-8 h-8 sm:w-20 sm:h-20 mb-6 rounded-2xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 md:p-4 overflow-hidden shadow-md">
                             <Image
                               src={props.logo}
                               alt={props.title}

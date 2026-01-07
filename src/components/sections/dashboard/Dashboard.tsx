@@ -78,7 +78,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-      <div className="w-screen  bg-gray-50 dark:bg-gray-900/50">
+      <div className="w-screen  bg-gray-50 dark:bg-gray-900/50 overflow-x-hidden">
         <Container>
             <section
           id="dashboard"

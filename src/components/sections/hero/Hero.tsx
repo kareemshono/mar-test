@@ -49,7 +49,7 @@ const handleScrollClick = () => {
       <div className="w-64 h-64 rounded-full  bg-fuchsia-400/20 dark:bg-rose-900/10 dark:drop-shadow-2xl dark:drop-shadow-rose-500/70 blur-lg absolute top-0 left-25 z-[-1]"></div>
       <div className="w-64 h-64 rounded-full  bg-fuchsia-400/20 dark:bg-rose-900/10 dark:drop-shadow-2xl dark:drop-shadow-rose-500/70 blur-lg absolute top-50 right-15 z-[-1]"></div>
       {/* colored - title - badge  */}
-      <div className="border-1 border-rose-500/60  mt-10 lg:mt-10 bg-rose-500/20 py-1 px-5 rounded-xl flex gap-2 duration-1000 hover:scale-[1.1]">
+      <div className="border-1 border-rose-500/60  mt-10 mx-5 lg:mx-0 lg:mt-10 bg-rose-500/20 py-1 px-5 rounded-xl flex gap-2 duration-1000 hover:scale-[1.1]">
         <Sparkles className="text-rose-500 p-1" />
         <h3 className="text-rose-500">{t("badge")}</h3>
         <Dot  strokeWidth="5px" className=" animate-pulse text-rose-500" />
@@ -61,7 +61,7 @@ const handleScrollClick = () => {
       </div>
       {/* subtitle */}
       
-      <div className="max-w-xl  lg:max-w-3xl mt-10">
+      <div className="max-w-xl px-5  lg:max-w-3xl mt-10">
         <p className="text-lg lg:text-xl/8 text-center text-gray-600 dark:text-gray-400">
           {t("subtitle")}
         </p>

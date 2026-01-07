@@ -238,3 +238,8 @@ html, body{
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+html, body {
+  overflow-x: hidden;     /* Hides horizontal overflow */
+  width: 100%;            /* Better than 100vw */
+  max-width: 100vw;
+}

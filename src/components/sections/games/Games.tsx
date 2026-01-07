@@ -38,7 +38,7 @@ export default function Games() {
             transition={{ duration: 0.7 }}
             className="w-full max-w-xl order-2   lg:order-1"
           >
-            <div className="grid grid-cols-1 xs:grid-cols-2 ml-7 lg:grid-cols-2 gap-5 lg:gap-5 sm:gap-6">
+            <div className="grid grid-cols-1 xs:grid-cols-2 lg:ml-7 lg:grid-cols-2 gap-5 lg:gap-5 sm:gap-6">
               {cards.map((game, idx) => {
                 return <GamesCard key={idx} idx={idx} title={game.title} description={game.description} color={game.color} icon={game.icon}  />
               })}

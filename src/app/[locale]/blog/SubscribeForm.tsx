@@ -19,12 +19,8 @@ const subscribeSchema = z.object({
 });
 
 type SubscribeData = z.infer<typeof subscribeSchema>;
-const formId = process.env.NEXT_PUBLIC_FORM_ID;
+  const [state, formspreeSubmit] = useFormspree(process.env.NEXT_PUBLIC_FORM_ID as string);
 
-if (!formId) {
-  throw new Error("Missing NEXT_PUBLIC_FORM_ID environment variable. Check your .env and Vercel settings.");
-}
-  const [state, formspreeSubmit] = useFormspree(formId);
   const {
     register,
     handleSubmit,

@@ -9,7 +9,7 @@ type Props = {
 const ColoredTitle = (props: Props) => {
     const t = useTranslations(`${props.json_key}`)
   return (
-     <h1 className={cn(" mt-10 text-slate-900 dark:text-white mb-6 leading-tight", props.className)}>
+     <h1 className={cn(" mt-10 text-slate-900 dark:text-white mb-6  ", props.className)}>
           {t.rich("title",{
             colored:(chunks) => {
                return<span className="text-rose-500 font-semibold relative">

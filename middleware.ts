@@ -17,7 +17,7 @@ export default function middleware(request: NextRequest) {
     // 2. Now we add security headers to whatever response came back
     const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
-  const csp = `
+        const csp = `
         default-src 'self';
         script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
         style-src 'self' 'nonce-${nonce}';  // ← removed 'unsafe-inline'

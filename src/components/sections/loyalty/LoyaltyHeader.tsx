@@ -10,7 +10,7 @@ const LoyaltyHeader = () => {
   return (
     <header>
           <ColoredTitle json_key="loyalty" className={cn(
-              "text-4xl sm:text-5xl md:text-6xl lg:text-5xl/20  mb-6 text-slate-900 dark:text-white",
+              "text-4xl/15 sm:text-5xl md:text-6xl lg:text-5xl/20  mb-6 text-slate-900 dark:text-white",
               "text-center lg:text-left",
               isRtl && "text-right lg:text-right"
             )} />

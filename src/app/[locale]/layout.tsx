@@ -16,6 +16,7 @@ import { Toaster } from "sonner";
 import LoadingPage from "./LoadingPage";
 import { TransitionProvider } from "@/components/transitionProvider/TransitionProvider";
 import { LenisProvider } from "@/components/lenis/LenisProvider";
+import { headers } from "next/headers";
 
 
 
@@ -118,6 +119,9 @@ export default async function RootLayout({
   params,
 }: Readonly<RootLayoutProps>) {
   const { locale } = await params;
+
+  // This line forces dynamic rendering + reads headers (triggers nonce injection)
+  await headers();
 
   // Validate locale
   if (!routing.locales.includes(locale as any)) {
