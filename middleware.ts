@@ -1,60 +1,55 @@
-// middleware.ts (project root)
+// middleware.ts (root level!)
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 import createMiddleware from 'next-intl/middleware';
-import { routing } from '@/i18n/routing';
+import { routing } from '@/i18n/routing';  // your existing config
 
+//  next-intl middleware
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
-  const intlResponse = intlMiddleware(request) ?? NextResponse.next();
+  // 1. Run next-intl first → handles locale detection, redirects, etc.
+  const response = intlMiddleware(request);
 
-  const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
-  const isDev = process.env.NODE_ENV === 'development';
+  // If next-intl already returned a redirect/response, just return it
+  if (response) {
+    // 2. Now we add security headers to whatever response came back
+    const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
-  const csp = [
-    `default-src 'self'`,
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''}`,
-    `style-src 'self' 'nonce-${nonce}'`,
-    `img-src 'self' https: data: blob:`,
-    `font-src 'self' data:`,
-    `object-src 'none'`,
-    `base-uri 'self'`,
-    `frame-ancestors 'none'`,
-    `block-all-mixed-content`,
-    `upgrade-insecure-requests`,
-  ].join('; ');
+        const csp = `
+        default-src 'self';
+        script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
+        style-src 'self' 'nonce-${nonce}';  // ← removed 'unsafe-inline'
+        img-src 'self' blob: data: https:;
+        font-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        frame-ancestors 'none';
+        upgrade-insecure-requests;
+        block-all-mixed-content;
+      `.replace(/\s{2,}/g, ' ').trim();
 
-  // Nonce on request → Next.js auto-injects into scripts/styles
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('x-nonce', nonce);
+    // Pass nonce to Next.js internals
+    response.headers.set('x-nonce', nonce);
+    response.headers.set('Content-Security-Policy', csp);
+    response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
 
-  const response = NextResponse.next({
-    request: { headers: requestHeaders },
-  });
+    return response;
+  }
 
-  // Preserve intl
-  intlResponse.headers.forEach((value, key) => response.headers.set(key, value));
-  intlResponse.cookies.getAll().forEach(cookie => response.cookies.set(cookie));
-
-  // Headers
-  response.headers.set('Content-Security-Policy', csp);
-  response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-  response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
-  response.headers.set('X-Content-Type-Options', 'nosniff');
-  response.headers.set('X-Frame-Options', 'DENY');
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  response.headers.set('Permissions-Policy', 'geolocation=(), camera=(), microphone=()');
-
-  return response;
+  // Fallback (shouldn't happen with next-intl)
+  return NextResponse.next();
 }
 
-// Safe matcher – allows _next/image (optimization) while skipping heavy static
+// Single unified matcher – safe for both i18n and security headers
 export const config = {
   matcher: [
+    // Match all paths except Next.js internals & static assets
+    '/((?!_next/static|_next/image|favicon.ico|api|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
+    // Include root and locale-prefixed paths for redirects
     '/',
     '/(ar|en)/:path*',
-    '/((?!_next/static|favicon.ico|.*\\..*).*)',  // Skips static files with extensions, but allows _next/image
   ],
 };
