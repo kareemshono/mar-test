@@ -1,4 +1,4 @@
-// middleware.ts (project root)
+// middleware.ts (project root – next to package.json)
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -8,7 +8,7 @@ import { routing } from '@/i18n/routing';
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
-  // Run next-intl first (locale detection, redirects, cookies)
+  // Run next-intl first
   const response = intlMiddleware(request) ?? NextResponse.next();
 
   // Generate nonce
@@ -16,7 +16,7 @@ export default function middleware(request: NextRequest) {
 
   const isDev = process.env.NODE_ENV === 'development';
 
-  // Strict CSP – no 'unsafe-inline' on styles thanks to nonce injection
+  // Strict CSP – nonce handles styles too (no unsafe-inline needed)
   const csp = [
     `default-src 'self'`,
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''}`,
@@ -30,20 +30,19 @@ export default function middleware(request: NextRequest) {
     `upgrade-insecure-requests`,
   ].join('; ');
 
-  // Set nonce on request headers → Next.js auto-applies it to all its scripts/styles
+  // Set nonce on request → Next.js auto-injects into scripts/styles
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-nonce', nonce);
 
-  // Create new response preserving intl changes
   const securedResponse = NextResponse.next({
     request: { headers: requestHeaders },
   });
 
-  // Copy intl cookies/headers if any
+  // Preserve intl headers/cookies
   response.headers.forEach((value, key) => securedResponse.headers.set(key, value));
   response.cookies.getAll().forEach(cookie => securedResponse.cookies.set(cookie));
 
-  // Apply security headers
+  // Security headers
   securedResponse.headers.set('Content-Security-Policy', csp);
   securedResponse.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   securedResponse.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
@@ -55,14 +54,14 @@ export default function middleware(request: NextRequest) {
   return securedResponse;
 }
 
-// Clean matcher – no capturing groups, covers i18n + skips assets safely
+// Fixed matcher – no capturing groups, uses official next-intl pattern
 export const config = {
   matcher: [
-    // Root for locale redirects
+    // Enable locale redirects on root
     '/',
     // Locale-prefixed paths
     '/(ar|en)/:path*',
-    // All other HTML/page requests (negative lookahead, no capturing groups)
-    '/((?!_next/static|_next/image|favicon.ico|api|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
+    // All other pages – skip internals + static files with dot
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)',
   ],
 };
