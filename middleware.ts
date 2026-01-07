@@ -1,4 +1,4 @@
-// middleware.ts (project root – next to package.json)
+// middleware.ts (project root)
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -8,14 +8,15 @@ import { routing } from '@/i18n/routing';
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
-  // Run next-intl first (handles locale detection & redirects)
+  // Run next-intl first (locale detection, redirects, cookies)
   const response = intlMiddleware(request) ?? NextResponse.next();
 
-  // Generate fresh nonce per request
+  // Generate nonce
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
   const isDev = process.env.NODE_ENV === 'development';
 
+  // Strict CSP – no 'unsafe-inline' on styles thanks to nonce injection
   const csp = [
     `default-src 'self'`,
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''}`,
@@ -29,39 +30,39 @@ export default function middleware(request: NextRequest) {
     `upgrade-insecure-requests`,
   ].join('; ');
 
-  // Critical: Set x-nonce on request headers so Next.js injects nonce into its own tags
+  // Set nonce on request headers → Next.js auto-applies it to all its scripts/styles
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-nonce', nonce);
 
-  // Re-create response with modified request (preserves intl cookies/redirects)
-  const modifiedResponse = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
+  // Create new response preserving intl changes
+  const securedResponse = NextResponse.next({
+    request: { headers: requestHeaders },
   });
 
-  // Copy over any headers/cookies from intlMiddleware response
-  response.headers.forEach((value, key) => modifiedResponse.headers.set(key, value));
-  response.cookies.getAll().forEach((cookie) => modifiedResponse.cookies.set(cookie));
+  // Copy intl cookies/headers if any
+  response.headers.forEach((value, key) => securedResponse.headers.set(key, value));
+  response.cookies.getAll().forEach(cookie => securedResponse.cookies.set(cookie));
 
   // Apply security headers
-  modifiedResponse.headers.set('Content-Security-Policy', csp);
-  modifiedResponse.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-  modifiedResponse.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
-  modifiedResponse.headers.set('X-Content-Type-Options', 'nosniff');
-  modifiedResponse.headers.set('X-Frame-Options', 'DENY');
-  modifiedResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  modifiedResponse.headers.set('Permissions-Policy', 'geolocation=(), camera=(), microphone=()');
+  securedResponse.headers.set('Content-Security-Policy', csp);
+  securedResponse.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  securedResponse.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+  securedResponse.headers.set('X-Content-Type-Options', 'nosniff');
+  securedResponse.headers.set('X-Frame-Options', 'DENY');
+  securedResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  securedResponse.headers.set('Permissions-Policy', 'geolocation=(), camera=(), microphone=()');
 
-  return modifiedResponse;
+  return securedResponse;
 }
 
+// Clean matcher – no capturing groups, covers i18n + skips assets safely
 export const config = {
   matcher: [
-    // All HTML pages + locale roots for redirects
+    // Root for locale redirects
     '/',
+    // Locale-prefixed paths
     '/(ar|en)/:path*',
-    // Skip static/_next assets & common static files
-    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(png|jpg|jpeg|gif|webp|svg|ico)$).*)',
+    // All other HTML/page requests (negative lookahead, no capturing groups)
+    '/((?!_next/static|_next/image|favicon.ico|api|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
   ],
 };
