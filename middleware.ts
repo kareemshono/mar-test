@@ -1,54 +1,46 @@
-// middleware.ts (project root – next to package.json)
+// middleware.ts (root level!)
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 import createMiddleware from 'next-intl/middleware';
-import { routing } from '@/i18n/routing';
+import { routing } from '@/i18n/routing';  // your existing config
 
+//  next-intl middleware
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
-  const response = intlMiddleware(request) ?? NextResponse.next();
+  // 1. Run next-intl first → handles locale detection, redirects, etc.
+  const response = intlMiddleware(request);
 
-  const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+  // If next-intl already returned a redirect/response, just return it
+  if (response) {
+    // 2. Now we add security headers to whatever response came back
+    const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
-  const isDev = process.env.NODE_ENV === 'development';
+        const csp = `
+        default-src 'self';
+        script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
+        style-src 'self' 'nonce-${nonce}';  // ← removed 'unsafe-inline'
+        img-src 'self' blob: data: https:;
+        font-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        frame-ancestors 'none';
+        upgrade-insecure-requests;
+        block-all-mixed-content;
+      `.replace(/\s{2,}/g, ' ').trim();
 
-  const csp = [
-    `default-src 'self'`,
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''}`,
-    `style-src 'self' 'nonce-${nonce}'`,
-    `img-src 'self' blob: data: https:`,  // ← Fixed images (https: for external)
-    `font-src 'self' data:`,
-    `object-src 'none'`,
-    `base-uri 'self'`,
-    `frame-ancestors 'none'`,  // ← Clickjacking protection (modern browsers)
-    `block-all-mixed-content`,
-    `upgrade-insecure-requests`,
-  ].join('; ');
+    // Pass nonce to Next.js internals
+    response.headers.set('x-nonce', nonce);
+    response.headers.set('Content-Security-Policy', csp);
+    response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
 
-  // Set nonce on request → Next.js auto-injects into all scripts/styles
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('x-nonce', nonce);
+    return response;
+  }
 
-  const securedResponse = NextResponse.next({
-    request: { headers: requestHeaders },
-  });
-
-  // Preserve next-intl headers/cookies
-  response.headers.forEach((value, key) => securedResponse.headers.set(key, value));
-  response.cookies.getAll().forEach(cookie => securedResponse.cookies.set(cookie));
-
-  // Apply headers
-  securedResponse.headers.set('Content-Security-Policy', csp);
-  securedResponse.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-  securedResponse.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
-  securedResponse.headers.set('X-Content-Type-Options', 'nosniff');
-  securedResponse.headers.set('X-Frame-Options', 'DENY');  // ← Clickjacking (legacy browsers)
-  securedResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  securedResponse.headers.set('Permissions-Policy', 'geolocation=(), camera=(), microphone=()');
-
-  return securedResponse;
+  // Fallback (shouldn't happen with next-intl)
+  return NextResponse.next();
 }
 
 // Single unified matcher – safe for both i18n and security headers
