@@ -1,0 +1,702 @@
+{
+  "navbar": {
+    "features": "Features",
+    "dashboard": "Dashboard",
+    "integrations": "Integrations",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "english": "English",
+    "arabic": "Arabic",
+    "get_demo":"Get a Demo"
+  },
+
+  "hero": {
+    "badge": "The Future of Customer Engagement",
+    "title": "Transform Your Business with Powerful <colored>Gamification</colored>",
+    "subtitle": "Boost engagement, loyalty, and revenue with our comprehensive gamification platform. Create interactive experiences that keep your customers coming back for more.",
+    "btn_get_demo": "Get a Demo",
+    "btn_watch_video": "Watch Video",
+    "rewards":"Rewards Given",
+    "engagement":"Engagement Rate",
+    "users":"Active Users"
+  },
+
+  "features": {
+    "title": "Everything You Need to <colored>Engage & Retain</colored>",
+    "subtitle": "A complete gamification platform with all the tools you need to create unforgettable customer experiences.",
+    "cards": [
+      {
+        "title": "Loyalty & Points System",
+        "description": "Build comprehensive loyalty programs with customizable points, rewards, and tier systems.",
+        "icon": "trophy"
+      },
+      {
+        "title": "Gamification Engine",
+        "description": "Engage users with interactive games including spin wheels, scratch cards, and quizzes.",
+        "icon": "gamepad-2"
+      },
+      {
+        "title": "Campaign Automation",
+        "description": "Create automated campaigns triggered by user behavior and custom events.",
+        "icon": "zap"
+      },
+      {
+        "title": "Segments & Personalization",
+        "description": "Target specific user groups with personalized experiences and rewards.",
+        "icon": "users"
+      },
+      {
+        "title": "Developer API",
+        "description": "Powerful RESTful API with webhooks, SDKs, and comprehensive documentation.",
+        "icon": "code"
+      },
+      {
+        "title": "Analytics Dashboard",
+        "description": "Real-time insights into user engagement, campaign performance, and ROI.",
+        "icon": "chart-column"
+      },
+      {
+        "title": "Multichannel Notifications",
+        "description": "Reach users via email, SMS, push notifications, and in-app messages.",
+        "icon": "bell"
+      },
+      {
+        "title": "Merchant Tools",
+        "description": "Complete suite of tools for managing rewards, redemptions, and vendor relationships.",
+        "icon": "store"
+      }
+    ]
+  },
+  "loyalty": {
+    "title": "<colored> Loyalty & Rewards</colored> That Drive Results.",
+    "subtitle": "Build powerful loyalty programs that keep customers engaged and coming back. Our comprehensive platform makes it easy to reward every interaction.",
+    "loyalty_cards": [
+      {
+        "title": "Earn Rules",
+        "description": "Define custom rules for how customers earn points through purchases, referrals, and actions.",
+        "icon": "gift"
+      },
+      {
+        "title": "Redeem Rules",
+        "description": "Create flexible redemption options with dynamic pricing and exclusive rewards.",
+        "icon": "star"
+      },
+      {
+        "title": "Points Wallet",
+        "description": "Transparent point tracking with detailed transaction history and expiration management.",
+        "icon": "wallet"
+      },
+      {
+        "title": "Tier System",
+        "description": "Multi-tier programs with automatic upgrades and exclusive benefits for top customers.",
+        "icon": "award"
+      },
+      {
+        "title": "Multi-Brand Ecosystem",
+        "description": "Enable points sharing across multiple brands and create partner reward networks.",
+        "icon": "building"
+      }
+    ],
+    "points_earned": "Points Earned",
+    "points_bonus": "+125 pts",
+
+    "available_rewards": "Available Rewards",
+    "recent_activity": "Recent Activity",
+    "pts":"pts",
+    "engagement":"Engagement",
+    "retention":"Retention",
+    "revenue":"Revenue",
+    "rewards": [
+      { "name": "Cashback", "points": 500,"icon":"dollar-sign" },
+      { "name": "Extra Points", "points": 300,"icon":"star" },
+      { "name": "Spin the Wheel", "points": 200,"icon":"target" },
+      { "name": "Scratch & Win", "points": 250,"icon":"ticket" },
+      { "name": "Discount Coupon", "points": 400,"icon":"tag" },
+      { "name": "Free eSIM", "points": 800,"icon":"smartphone" },
+      { "name": "Gift Card", "points": 1000,"icon":"credit-card" }
+    ],
+    
+    "activity": [
+      { "action": "Purchase completed", "points": "+50", "time": "2h ago","color": "#9333EA" },
+      { "action": "Friend referred", "points": "+100", "time": "1d ago","color": "#9333EA" },
+      { "action": "Review submitted", "points": "+25", "time": "3d ago","color": "#EF4444" }
+    ],
+
+    "stats": [
+      { "value": "12.5K", "label": "Active Users" },
+      { "value": "2.4M", "label": "Points Issued" },
+      { "value": "8.9K", "label": "Rewards Given" }
+    ]
+  },
+  "games": {
+    "title": "Interactive <colored>Games & Gamification</colored>",
+    "subtitle": "Turn engagement into entertainment with our suite of interactive games that keep users coming back for more.",
+    "cards": [
+      {
+        "title": "Spin the Wheel",
+        "description": "Customizable prize wheels with dynamic odds and exciting animations.",
+        "icon": "sparkles",
+        "color": "#FF1D57"
+      },
+      {
+        "title": "Scratch Cards",
+        "description": "Digital scratch cards with instant rewards and custom designs.",
+        "icon": "target",
+        "color": "#E01A4F"
+      },
+      {
+        "title": "Trivia & Quizzes",
+        "description": "Engaging knowledge-based games with branded questions.",
+        "icon": "trophy",
+        "color": "#FF6B96"
+      },
+      {
+        "title": "Leaderboards",
+        "description": "Competitive rankings that drive engagement and repeat visits.",
+        "icon": "gamepad",
+        "color": "#C21747"
+      }
+    ],
+
+    "stats": [
+      { "value": "2.5M+", "label": "Games Played" },
+      { "value": "4.2 min", "label": "Avg. Play Time" },
+      { "value": "125K", "label": "Daily Active Users" },
+      { "value": "+68%", "label": "Engagement Rate" }
+    ],
+    "wheel": {
+    "segments": {
+      "cashback": "Cashback",
+      "points": "Points",
+      "voucher": "Voucher",
+      "more_spin_try": "More Spin Try",
+      "scratch_and_win": "Scratch & Win",
+      "discount": "Discount",
+      "esim": "eSIM",
+      "gift_card": "Gift Card"
+    },
+    "spin_button": "Spin Now",
+    "spinning": "Spinning...",
+    "you_won": "You Won!",
+    "congratulations": "Congratulations!"
+  }
+  },
+  "dashboard": {
+    "title": "Real-Time <colored>Analytics Hub</colored>",
+    "subtitle": "Watch your engagement soar with live metrics, interactive insights, and AI-powered analytics",
+    "metrics": [
+      {
+        "label": "Active Players",
+        "value": "45.2K",
+        "change": "+12.5%",
+        "color": "#FF1D57",
+        "icon":"users"
+      },
+      {
+        "label": "Engagement Score",
+        "value": "94%",
+        "change": "+8.3%",
+        "color": "#993EF9",
+        "icon":"trending-up"
+      },
+      {
+        "label": "Active Campaigns",
+        "value": "156",
+        "change": "+24",
+        "color": "#41FF00",
+        "icon":"zap"
+      },
+      {
+        "label": "Rewards Claimed",
+        "value": "12.3K",
+        "change": "+18.9%",
+        "color": "#FFD700",
+        "icon":"award"
+      }
+    ],
+    "participants":"Participants",
+    "activity_pulse":"Activity Pulse",
+    "actions_60s":"Actions in the last 60 seconds",
+    "view_all":"View All",
+    "top_performers_title":"Top Performers",
+    "top_performers": [
+      { "name": "Welcome Spin Wheel", "users": 2340, "change": 15.3 },
+      { "name": "Daily Streak Bonus", "users": 1890, "change": 12.7 },
+      { "name": "Refer & Earn", "users": 1450, "change": 8.2 }
+    ],
+    "dashboard_features": [
+    {
+      "type": "ai-insights",
+      "title": "AI-Powered Insights",
+      "description": "Get smart recommendations to boost engagement by 34% on average",
+      "icon": "bot",
+      "button_text": "View Insights",
+      "button_icon": "move-right"
+    },
+    {
+      "type": "automation",
+      "title": "Smart Automation",
+      "description": "156 automated workflows running seamlessly",
+      "icon": "cog",
+      "progress": 87
+    },
+    {
+      "type": "export",
+      "title": "Export Analytics",
+      "description": "Download comprehensive reports in multiple formats",
+      "icon": "chart-column",
+      "formats": ["CSV", "PDF", "JSON"]
+    }
+  ]
+  },
+  "integrations": {
+    "title": "Seamless <colored>Integrations</colored>",
+    "subtitle": "Connect with your favorite tools and platforms. Our powerful API makes integration a breeze.",
+    "featured": "Featured",
+    "partners": "Partners",
+    "featuredPartners": [
+      {
+        "tag": "E-commerce",
+        "title": "Walashi",
+        "description": "Unified commerce and delivery management",
+        "status": "Active Integration",
+        "logo":"/images/integrations/walashi.png",
+        "color":"#22c55e"
+      },
+      {
+        "tag": "Communication",
+        "title": "ConnectPal",
+        "description": "Customer communication and engagement platform",
+        "status": "Active Integration",
+        "logo":"/images/integrations/connectpal.png",
+        "color":"#06b6d4"
+      },
+      {
+        "tag": "Payment",
+        "title": "Maal Pay",
+        "description": "Seamless payment processing and transaction rewards",
+        "status": "Active Integration",
+        "logo":"/images/integrations/maalpay.png",
+        "color":"#fbbf24"
+      }
+    ],
+    "connect_with_title": "Connect with ",
+    "popular_tools": "Popular Tools",
+    "api": {
+      "badge": "Developer API",
+      "title": "Build Custom Integrations",
+      "description": "Powerful REST API with comprehensive docs, SDKs, and webhooks. Build exactly what you need.",
+      "status_label": "API Status",
+      "status_value": "Operational",
+      "stats": [
+        {
+          "label": "REST API",
+          "value": "50+",
+          "subtitle": "Endpoints",
+          "color": "#FF1D57"
+        },
+        {
+          "label": "Uptime",
+          "value": "99.9%",
+          "subtitle": "Guaranteed",
+          "color": "#993EF9"
+        },
+        {
+          "label": "Response",
+          "value": "<100ms",
+          "subtitle": "Average",
+          "color": "#41FF00"
+        }
+      ],
+      "btn_docs": "View Documentation",
+      "btn_key": "Get API Key"
+    },
+    "futureIntegrations": [
+      {
+        "name": "WhatsApp Business",
+        "description": "Send rewards and notifications via WhatsApp",
+        "icon":"message-square",
+        "color":"#FF1D57"
+      },
+      {
+        "name": "Email Providers",
+        "description": "Mailchimp, SendGrid, and more",
+        "icon":"mail",
+        "color":"#E01A4F"
+      },
+      { "name": "POS Systems", "description": "In-store loyalty integration",
+      "icon":"mail",
+      "color":"#FF6B96" },
+      {
+        "name": "Payment Gateways",
+        "description": "Stripe, PayPal, and regional providers",
+        "icon":"credit-card",
+        "color":"#C21747"
+      }
+    ],
+    "docToast":"Documentation is comming soon...",
+    "docToastTuned":"Stay Tuned !",
+    "docToastOk":"Ok"
+  },
+  "pricing": {
+  "title":"Simple <colored>Transparent</colored>, Prices",
+    "subtitle": "Choose the perfect plan for your business. All plans include core features with no hidden fees.",
+    "trial": "All plans include 14-day free trial. No credit card required.",
+    "cancel": "Cancel anytime",
+    "support": "24/7 support",
+    "guarantee": "Money-back guarantee",
+    "month":"Month",
+    "popular": "Most Popular",
+    "dialogTitle":"You've selected the <green></green> Plan",
+    "dialogDescription":"Once you confirm your request, you will hear from us within 24 hours.",
+    "dialogNameLabel":"Full Name",
+    "dialogEmailLabel":"Email",
+    "dialogPhoneLabel":"Phone",
+    "dialogNamePlaceholder":"Your name",
+    "dialogEmailPlaceholder":"you@example.com",
+    "dialogPhonePlaceholder":"+963 9554 803 51",
+    "confirmReqBtn":"Confirm Request",
+    "cancelBtn":"Cancel",
+    "planSuccessToast":"Plan request sent! We'll contact you soon.",
+    "planErrorToast":"Failed to send request. Please try again.",
+    
+   "plans": [
+      {
+        "key": "free",
+        "name": "Free",
+        "price": "$0",
+        "description": "Perfect for getting started",
+        "cta": "Start Free",
+        "color": "#f8628cff",
+        "icon": "check-check",
+        "features": [
+          "Up to 1,000 active users",
+          "Basic loyalty program",
+          "2 game templates",
+          "Email support",
+          "Basic analytics"
+        ]
+      },
+      {
+        "key": "standard",
+        "name": "Standard",
+        "price": "$99",
+        "description": "For growing businesses",
+        "cta": "Get Started",
+        "color": "#f55784ff",
+        "icon": "star",
+        "features": [
+          "Up to 10,000 active users",
+          "Advanced loyalty & rewards",
+          "All game templates",
+          "Campaign automation",
+          "Priority support",
+          "Advanced analytics",
+          "API access"
+        ]
+      },
+      {
+        "key": "pro",
+        "name": "Pro",
+        "price": "$299",
+        "description": "For scaling companies",
+        "cta": "Go Pro",
+        "color": "#FF1D57",
+        "icon": "crown",
+        "popular": true,
+        "features": [
+          "Up to 100,000 active users",
+          "Everything in Standard",
+          "Multi-brand support",
+          "Custom integrations",
+          "Dedicated support",
+          "White-label options",
+          "Advanced segmentation",
+          "Custom reporting"
+        ]
+      },
+      {
+        "key": "enterprise",
+        "name": "Enterprise",
+        "price": "Custom",
+        "description": "For large organizations",
+        "cta": "Contact Sales",
+        "color": "#E01A4F",
+        "icon": "building-2",
+        "features": [
+          "Unlimited users",
+          "Everything in Pro",
+          "Custom development",
+          "SLA guarantee",
+          "Account manager",
+          "Training & onboarding",
+          "Custom contracts",
+          "Premium support"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked <colored>Questions</colored>",
+    "subtitle": "Everything you need to know about our platform. Can't find the answer you're looking for? Feel free to contact us.",
+    "still_have_questions": "Still have questions?",
+    "contact_prompt": "Our team is here to help you get started.",
+    "contact_cta": "Contact Support",
+    "items": [
+      {
+        "question": "How quickly can I get started?",
+        "answer": "You can start building your gamification program immediately after signing up. Our intuitive dashboard and pre-built templates mean you can launch your first campaign in under 30 minutes."
+      },
+      {
+        "question": "Do you offer custom integrations?",
+        "answer": "Yes! We provide a comprehensive REST API, webhooks, and SDKs for popular platforms. Our team can also help with custom integrations for Enterprise plans."
+      },
+      {
+        "question": "What kind of support do you provide?",
+        "answer": "All plans include email support. Standard and Pro plans get priority support, while Enterprise customers receive dedicated account management and 24/7 phone support."
+      },
+      {
+        "question": "Can I customize the look and feel?",
+        "answer": "Absolutely! Our platform offers extensive customization options including colors, logos, fonts, and layouts. Pro and Enterprise plans include white-label options."
+      },
+      {
+        "question": "Is there a free trial?",
+        "answer": "Yes, all paid plans come with a 14-day free trial. No credit card required to start. You can explore all features and see if it's the right fit for your business."
+      },
+      {
+        "question": "How does pricing scale with users?",
+        "answer": "Each plan includes a specific number of active users. As your business grows, you can upgrade to a higher tier or contact us for custom Enterprise pricing with unlimited users."
+      },
+      {
+        "question": "What analytics and reporting do you provide?",
+        "answer": "Our platform includes real-time analytics, custom reports, user engagement metrics, campaign performance tracking, and ROI analysis. Export data in CSV or connect via our API."
+      },
+      {
+        "question": "Is my data secure?",
+        "answer": "Security is our top priority. We use enterprise-grade encryption, regular security audits, GDPR compliance, and offer SOC 2 certification for Enterprise customers."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in <colored>Touch</colored>",
+    "subtitle": "Ready to transform your customer engagement? Contact us for a personalized demo.",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "company": "Company",
+      "message": "Message",
+      "placeholder_firstName": "John",
+      "placeholder_lastName": "Doe",
+      "placeholder_email": "john@company.com",
+      "placeholder_company": "Your Company",
+      "placeholder_message": "Tell us about your project...",
+      "submit": "Send Message"
+    },
+    "email": {
+      "title": "Email Us",
+      "description": "Get in touch via email",
+      "address": "info@mario-app.com"
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "description": "Chat with us on WhatsApp",
+      "number": "(+963) 944000508"
+    },
+    "demo": {
+      "title": "Schedule a Demo",
+      "description": "See our platform in action with a personalized demo from our team.",
+      "cta": "Book Demo Call"
+    },
+    "success": {
+      "title": "Message Sent Successfully! 🎉",
+      "body": "Thanks for reaching out! We'll get back to you within 24 hours."
+    }
+  },
+  "about_page":{
+    "title":"About Mario - Innovating Business with Gamification",
+    "introduction_header":"Introduction:",
+    "introduction_description":"Welcome to <colored>Mario</colored>, a dynamic leader in gamification solutions. We empower businesses across industries to leverage the power of gamification to engage, motivate, and retain both employees and customers. With our innovative approach, businesses can transform their processes into exciting, interactive experiences that increase productivity, enhance learning, and foster customer loyalty.",
+    "ourstory_header":"Our Story",
+    "ourstory_description":"Founded in <colored> 2025, Mario </colored> emerged from a simple yet powerful idea: to make business more engaging and rewarding. We saw an opportunity to bring the mechanics of games—fun, challenge, rewards, and progression—into the everyday business environment, and that’s how Mario was born. Today, we are proud to help businesses of all sizes unlock the power of gamification to boost employee engagement, enhance customer loyalty, and drive business results."
+    ,"set_apart":"What Sets Us Apart ?",
+    "set_apart_description":"At Mario, we don’t just provide gamification solutions—we create customized experiences tailored to the specific needs of your business. We work closely with our clients to design, implement, and optimize gamification strategies that align with their goals and objectives. With Mario, you get:",
+    "set_apart_li1":"<colored>Tailored Gamification Strategies:</colored> We offer personalized solutions that fit your unique business needs, whether it’s gamifying employee training, boosting sales with loyalty "
+    ,"set_apart_li2":"<colored>Data-Driven Insights:</colored> Our platform provides real-time analytics that help you measure engagement, track progress, and optimize your strategies based on data."
+    ,"set_apart_li3":"<colored>Seamless Integration:</colored>  Our platform integrates smoothly with your existing systems, ensuring a seamless experience for your business."
+    ,"set_apart_li4":"<colored>Ongoing Support:</colored> From onboarding to continuous updates, we offer full support to ensure your gamification initiatives stay on track."
+    ,"ourvision_title":"Our Vision",
+    "ourvision_description":"Our vision is to become the go-to platform for businesses looking to innovate through gamification. We believe in creating engaging, fun, and impactful experiences that drive real results, whether it’s for internal teams, customers, or both. As we continue to grow, we are committed to pushing the boundaries of what gamification can achieve."
+    ,"ourvalues_title":"Our Values",
+    "ourvalues_li1":"<colored>Innovation:</colored> We constantly innovate to stay ahead of the curve in gamification trends.",
+    "ourvalues_li2":"<colored>Collaboration:</colored> We work hand-in-hand with our clients to build solutions that work for them.",
+    "ourvalues_li3":"<colored>Integrity:</colored> We prioritize transparency and honesty in all our relationships.",
+    "ourvalues_li4":"<colored>Excellence:</colored> We strive for excellence in everything we do, from product development to customer service.",
+    "howcanwehelp":"How We Can Help:",
+     "howcanwehelpdescription":"Whether you're looking to engage employees, improve productivity, or foster customer loyalty, <colored> Mario </colored> has the solution for you. Our platform includes customizable gamification features such as:",
+    "employee_training":"<colored>Employee Training:</colored>  Increase employee performance through fun, gamified learning experiences.",
+    "customer_loyalty":"<colored>Customer Loyalty Programs:</colored> Reward loyal customers with points, badges, and exclusive perks.",
+    "sales_marketing":"<colored>Sales and Marketing:</colored> Use game mechanics to drive sales, referrals, and customer engagement."
+    ,"cta":"Ready to gamify your business? Contact us today and let’s explore how we can work together to drive success!",
+    "cta_button":"Contact Us"
+  },
+  "blog_page":{
+    "introduction":"Stay Ahead",
+    "introduction_para":" of the game with <colored>Mario's</colored> blog, where we share the latest trends, insights, and best practices in gamification. Whether you’re new to gamification or an experienced user, our blog provides valuable information to help you succeed.",
+    "recent_posts":"Recent Posts",
+    "posts": [
+    {
+      "number": "01",
+      "title": "How Gamification Can Boost Employee Engagement",
+      "description": "Discover how gamification strategies can be used to motivate employees, increase performance, and foster a fun work environment. This blog explores key examples of how businesses are using game mechanics to enhance employee engagement and satisfaction."
+    },
+    {
+      "number": "02",
+      "title": "Designing Effective Customer Loyalty Programs with Gamification",
+      "description": "Learn the best practices for designing loyalty programs that keep customers engaged and coming back for more. This article dives deep into the psychology of customer loyalty and how gamification can enhance the experience."
+    },
+    {
+      "number": "03",
+      "title": "The Top 5 Mistakes to Avoid in Gamification",
+      "description": "Gamification can be powerful, but only if done correctly. In this blog, we highlight the five most common mistakes businesses make when implementing gamification and offer tips on how to avoid them."
+    },
+    {
+      "number": "04",
+      "title": "Gamification for E-Learning: Engaging Your Workforce",
+      "description": "The future of training is gamified! This article examines how businesses are using gamification to create interactive and engaging learning experiences for employees, improving retention and knowledge application."
+    },
+    {
+      "number": "05",
+      "title": "Measuring the ROI of Gamification",
+      "description": "How do you measure success when using gamification in your business? This blog discusses key performance indicators (KPIs) and metrics to track to ensure you’re getting the most out of your gamification investment."
+    },
+    {
+      "number": "06",
+      "title": "Gamification and Customer Retention: A Winning Combination",
+      "description": "Retaining customers is more cost-effective than acquiring new ones. This blog looks at how gamification can be used to enhance customer retention strategies, turning one-time buyers into loyal, repeat customers."
+    }],
+    "stay_updated":"Stay Updated",
+    "stay_updated_subtitle":"on the latest gamification trends!",
+    "subtitle":"Subscribe to our blog and get fresh insights, proven strategies, and real-world examples delivered straight to your inbox — every week.",
+    "subscribe":"Subscribe Now",
+    "enter_email":"Enter Your Email",
+    "no_spam":"No spam, ever. Unsubscribe anytime.",
+    "invalid_email": "Please enter a valid email",
+  "subscription_success": "Thanks! we'ill contact you as soon as possible",
+  "subscription_error": "Oops! Something went wrong. Please try again."
+  },
+  "contact_page":{
+    "contact_us":"Contact Us",
+    "we_are_here":"We're Here To Help!",
+    "banner":"Have a question? Need support? Interested in how Mario can help your business? We’re here to assist! Whether you’re looking for more information on our gamification platform or need technical support, our team is ready to help you",
+    "form_header":"We’d love to hear from you! Please fill out the form below and we’ll get back to you as soon as possible.",
+    "office":"Our Office",
+    "location":"Syria, Damascus, AlMalki",
+    "phone":"Phone",
+    "num":"+963 989 311 124",
+    "email":"Email",
+    "working_hours":"Working Hours",
+    "mon_fr":"Monday to Friday",
+    "need_assistance":"Need assistance? Fill out the form above and our team will be in touch shortly!"
+  },
+  "privacy_page":{
+    "title":"Privacy Policy",
+    "subtitle":"Protecting Your Data",
+    "intro":"At <colored>Mario</colored>, we are committed to protecting the privacy and security of your personal and business data. This Privacy Policy outlines how we collect, use, and protect your information when you interact with our services.",
+    "info_we_collect":"Information We Collect:",
+    "personal_information":"<colored>Personal Information:</colored> We collect personal data, such as your name, email address, phone number, and business details, when you sign up for our services, subscribe to our newsletter, or contact us for support.",
+    "usage_data":"<colored>Usage Data:</colored> We collect information about how you interact with our platform, including pages visited, features used, and your activities on the site.",
+    "cookies":"<colored>Cookies:</colored> We use cookies and similar technologies to enhance your experience on our website, such as remembering your preferences and improving site functionality.",
+    "how_we_use_data":"How We Use Your Data:",
+    "provide_improve_services":"<colored>To Provide and Improve Our Services:</colored> We use your data to deliver our gamification services, improve user experience, and analyze site performance.",
+    "communicate":"<colored>To Communicate with You:</colored> We may use your data to send important notifications, updates, and marketing materials related to our services. You can opt out of marketing emails at any time.",
+    "comply":"<colored>To Comply with Legal Obligations:</colored> We may use your data to comply with applicable laws and regulations.",
+    "data_security":"Data Security:",
+    "data_security_description":" We employ a variety of technical, organizational, and physical security measures to protect your data from unauthorized access, disclosure, or destruction. These include:",
+    "data_encryption":"<colored>Data Encryption:</colored> All sensitive data is encrypted using SSL/TLS protocols.",
+    "secure_servers":"<colored>Secure Servers: </colored>We store your data on secure servers with restricted access.",
+    "regular_audits":"<colored>Regular Audits:</colored> We conduct regular security audits to ensure the safety of your data.",
+    "your_rights":"Your Rights:",
+    "your_rights_description":"As a user, you have the right to:",
+    "access":"<colored>Access:</colored> Request a copy of the data we hold about you.",
+    "correct":"<colored>Correct:</colored> Update your personal information if it’s inaccurate or incomplete.",
+    "delete":"<colored>Delete:</colored> Request the deletion of your data, subject to legal retention requirements.",
+    "optout":"<colored>Opt-Out</colored> Opt-out of marketing communications at any time.",
+    "data_retention":"Data Retention:",
+    "data_retention_description":" We retain your data only for as long as necessary to provide our services and comply with legal obligations. Once your data is no longer needed, we will securely delete it.",
+    "third_party_sharing":"Third-Party Sharing:",
+    "third_party_sharing_description":"We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except in the following circumstances:",
+    "service_providers":"<colored>Service Providers:</colored> We may share your data with trusted third-party service providers who help us operate our business and provide our services.",
+    "legal_req":"<colored>Legal Requirements:</colored> We may disclose your data if required by law, such as in response to a court order or governmental request.",
+    "privacy_changes":"Changes to This Privacy Policy:",
+    "privacy_changes_description":" We may update this Privacy Policy from time to time. When we do, we will post the revised policy on this page and update the effective date.",
+    "cta":"Have questions about how we protect your data? <colored>Contact us</colored> to learn more."
+
+
+  },
+  "terms_page": {
+  "title": "Terms and Conditions",
+  "subtitle": "Legal Agreement",
+  "intro": "Welcome to <colored>Mario</colored>! By accessing or using our platform, you agree to comply with and be bound by the following Terms and Conditions. These terms govern your use of our gamification platform and services. If you do not agree to these terms, please refrain from using our services.",
+  
+  "user_eligibility": "User Eligibility:",
+  "user_eligibility_description": "To use our platform, you must be at least 18 years old or the legal age of majority in your jurisdiction. By using our services, you confirm that you meet these eligibility requirements.",
+  
+  "account_creation": "Account Creation and Responsibility:",
+  "account_information": "<colored>Account Information:</colored> When creating an account, you must provide accurate and up-to-date information.",
+  "password_security": "<colored>Password Security:</colored> You are responsible for maintaining the confidentiality of your account credentials and ensuring the security of your account. You agree to notify us immediately of any unauthorized access.",
+  
+  "use_of_services": "Use of Services:",
+  "permitted_use": "<colored>Permitted Use:</colored> You may use our platform for lawful business purposes only. You agree not to use our services for any illegal, harmful, or fraudulent activity.",
+  "prohibited_use": "<colored>Prohibited Use:</colored> You agree not to engage in any conduct that could disrupt, damage, or impair the functioning of our platform or services.",
+  
+  "subscription_fees": "Subscription Fees and Payments:",
+  "subscription_fees_description": "Some of our services are provided on a subscription basis. By subscribing, you agree to the applicable fees and payment terms. Payments must be made in advance, and failure to pay may result in suspension or termination of access to the platform.",
+  
+  "intellectual_property": "Intellectual Property:",
+  "intellectual_property_description": "All content, logos, trademarks, and intellectual property associated with Mario are the exclusive property of Mario or its licensors. You are granted a limited, non-exclusive license to use the platform solely for its intended purpose.",
+  
+  "limitation_liability": "Limitation of Liability:",
+  "limitation_liability_description": "To the fullest extent permitted by law, Mario shall not be liable for any indirect, incidental, special, or consequential damages arising from the use or inability to use the platform, even if we have been advised of the possibility of such damages.",
+  
+  "termination": "Termination:",
+  "termination_description": "We may suspend or terminate your access to our services at any time, without notice, if you violate these Terms and Conditions.",
+  
+  "governing_law": "Governing Law:",
+  "governing_law_description": "These Terms and Conditions are governed by and construed in accordance with the laws of [Your Country]. Any disputes arising from these terms will be resolved in the courts of [Your Country].",
+  
+  "changes_to_terms": "Changes to Terms:",
+  "changes_to_terms_description": "We reserve the right to update or modify these Terms and Conditions at any time. When we do, we will post the revised terms on this page with an updated effective date.",
+  
+  "cta": "Read the full terms to ensure you understand our agreement and how it applies to your use of Mario. Have questions? <colored>Contact us</colored>."
+  },
+  "footer": {
+    "description": "The complete gamification platform to engage, reward, and retain your customers.",
+    "trusted_partners": "Trusted Partners",
+    "product": "Product",
+    "resources": "Resources",
+    "company": "Company",
+    "legal": "Legal",
+    "links": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "integrations": "Integrations",
+      "documentation": "Documentation",
+      "api": "API Reference",
+      "guides": "Guides",
+      "about": "About",
+      "blog": "Blog",
+      "contact": "Contact",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "security": "Security"
+    },
+    "copyright": "© 2025 MARIO. All rights reserved.",
+    "powered_by": "Powered by",
+    "rlink": "R-LINK"
+  },
+  "loader":{
+      "loading":"Loading...",
+  "wait":"Please wait while we prepare everything for you"
+  }
+}
