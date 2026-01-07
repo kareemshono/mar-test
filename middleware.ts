@@ -17,18 +17,18 @@ export default function middleware(request: NextRequest) {
     // 2. Now we add security headers to whatever response came back
     const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
-    const csp = `
-      default-src 'self';
-      script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-      style-src 'self' 'nonce-${nonce}' 'unsafe-inline';
-      img-src 'self' blob: data: https:;
-      font-src 'self';
-      object-src 'none';
-      base-uri 'self';
-      frame-ancestors 'none';
-      upgrade-insecure-requests;
-      block-all-mixed-content;
-    `.replace(/\s{2,}/g, ' ').trim();
+  const csp = `
+        default-src 'self';
+        script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
+        style-src 'self' 'nonce-${nonce}';  // ← removed 'unsafe-inline'
+        img-src 'self' blob: data: https:;
+        font-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        frame-ancestors 'none';
+        upgrade-insecure-requests;
+        block-all-mixed-content;
+      `.replace(/\s{2,}/g, ' ').trim();
 
     // Pass nonce to Next.js internals
     response.headers.set('x-nonce', nonce);
