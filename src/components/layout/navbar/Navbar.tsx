@@ -27,7 +27,7 @@ export default function Navbar() {
             <ThemeSwitcher />
             <LanguageMenu />
              <Link target="_target" href="https://calendly.com/quantumgatehero/30min">
-            <Button className="bg-rose-500  hover:bg-rose-600 text-white">
+            <Button aria-label="language" className="bg-rose-500  hover:bg-rose-600 text-white">
               {t("get_demo")}
             </Button>
             </Link>
