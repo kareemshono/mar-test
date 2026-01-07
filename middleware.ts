@@ -1,5 +1,7 @@
+// middleware.ts (project root)
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+
 import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
 
@@ -15,7 +17,7 @@ export default function middleware(request: NextRequest) {
     `default-src 'self'`,
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''}`,
     `style-src 'self' 'nonce-${nonce}'`,
-    `img-src 'self' https: data: blob:`,  // ← Fixed!
+    `img-src 'self' https: data: blob:`,
     `font-src 'self' data:`,
     `object-src 'none'`,
     `base-uri 'self'`,
@@ -24,7 +26,7 @@ export default function middleware(request: NextRequest) {
     `upgrade-insecure-requests`,
   ].join('; ');
 
-  // Pass nonce to Next.js rendering
+  // Nonce on request → Next.js auto-injects into scripts/styles
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-nonce', nonce);
 
@@ -32,11 +34,11 @@ export default function middleware(request: NextRequest) {
     request: { headers: requestHeaders },
   });
 
-  // Preserve next-intl stuff
+  // Preserve intl
   intlResponse.headers.forEach((value, key) => response.headers.set(key, value));
   intlResponse.cookies.getAll().forEach(cookie => response.cookies.set(cookie));
 
-  // Apply security headers
+  // Headers
   response.headers.set('Content-Security-Policy', csp);
   response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
@@ -44,16 +46,15 @@ export default function middleware(request: NextRequest) {
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.headers.set('Permissions-Policy', 'geolocation=(), camera=(), microphone=()');
-  response.headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
-  response.headers.set('Cross-Origin-Resource-Policy', 'same-origin');
 
   return response;
 }
 
+// Safe matcher – allows _next/image (optimization) while skipping heavy static
 export const config = {
   matcher: [
     '/',
     '/(ar|en)/:path*',
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)',
+    '/((?!_next/static|favicon.ico|.*\\..*).*)',  // Skips static files with extensions, but allows _next/image
   ],
 };
