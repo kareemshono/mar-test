@@ -141,10 +141,10 @@ export default function Loyalty() {
                       style={{ backgroundColor: bg[i] }}
                     >
                       <div
-                        className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center shadow-lg"
+                        className="w-8 h-8 lg:w-14  lg:h-14 rounded-full mx-auto mb-3 flex items-center justify-center shadow-lg"
                         style={{ backgroundColor: colors[i] }}
                       >
-                        <Award className="w-8 h-8 text-white" />
+                        <Award className="lg:w-8 lg:h-8 text-white" />
                       </div>
                       <p
                         className="text-sm"
@@ -232,7 +232,7 @@ export default function Loyalty() {
             transition={{ duration: 4, repeat: Infinity }}
             className={cn(
               "absolute -top-16 bg-rose-500 text-white px-6 py-4 rounded-2xl shadow-2xl z-30",
-              isRtl ? "-left-5 lg:-left-8" : "-right-5 lg:-right-8"
+              isRtl ? "-left-5 lg:-left-8" : "-right-2 lg:-right-8"
             )}
           >
             <div className="text-2xl font-medium">2.5x</div>
@@ -244,7 +244,7 @@ export default function Loyalty() {
             transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
             className={cn(
               "absolute -bottom-16 bg-purple-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-30",
-              isRtl ? "-right-8" : "-left-8"
+              isRtl ? "-right-8" : "-left-3"
             )}
           >
             <div className="text-3xl font-bold">89%</div>
@@ -256,7 +256,7 @@ export default function Loyalty() {
             transition={{ duration: 4, repeat: Infinity, delay: 1 }}
             className={cn(
               "absolute top-1/3 bg-green-500 text-white px-5 py-3 rounded-xl shadow-2xl z-30",
-              isRtl ? "left-0 lg:left-[-48px]" : "right-0 lg:-right-12"
+              isRtl ? "left-0 lg:left-[-48px]" : "-top-10 lg:-right-12"
             )}
           >
             <div className="text-2xl font-bold">+45%</div>
