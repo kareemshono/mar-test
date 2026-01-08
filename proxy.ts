@@ -10,6 +10,9 @@ const intlMiddleware = createMiddleware(routing);
 
 export default function proxy(request: NextRequest) {
   // 1. Run next-intl first → handles locale detection, redirects, etc.
+  if (request.nextUrl.pathname.startsWith('/_next')) {
+    return NextResponse.next();  // Or just intlMiddleware(request) without headers
+  }
   const response = intlMiddleware(request);
 
   // If next-intl already returned a redirect/response, just return it
