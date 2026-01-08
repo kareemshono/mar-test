@@ -137,8 +137,8 @@ const { startNavigation } = usePageTransition(); // ← Global trigger
             <div className="flex flex-wrap justify-center py-0 items-center gap-3">
               {[
                 "/images/integrations/walashi.png",
-                "/images/integrations/connectPal.png",
-                "/images/integrations/maalPay.png",
+                "/images/integrations/connectpal.png",
+                "/images/integrations/maalpay.png",
               ].map((src, i) => (
                 <motion.div
                   key={i}
