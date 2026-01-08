@@ -48,6 +48,7 @@ const FeaturedPartnerCard = (props: Props) => {
                               alt={props.title}
                               width={80}
                               height={80}
+                              unoptimized
                               className="w-full h-full object-contain"
                             />
                           </div>
