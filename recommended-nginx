@@ -5,7 +5,7 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; prelo
 
 add_header Cross-Origin-Opener-Policy "same-origin" always;
 
-# Optional extras for good measure (common best practices)
+## Optional extras for good measure (common best practices)
 add_header X-Content-Type-Options "nosniff" always;
 add_header X-Frame-Options "DENY" always;  # frame-ancestors in CSP already covers this, but extra layer
 add_header Referrer-Policy "strict-origin-when-cross-origin" always;
