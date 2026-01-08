@@ -26,7 +26,7 @@ const Features = () => {
     <Container>
        <section
       id="features"
-      className="w-full flex flex-col items-center my-10"
+      className="w-full flex flex-col items-center my-10 overflow-x-hidden"
     >
       <header className=" mt-20 space-y-5 flex flex-col items-center  ">
        <ColoredTitle json_key="features" className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl p-5 lg:p-0"/>

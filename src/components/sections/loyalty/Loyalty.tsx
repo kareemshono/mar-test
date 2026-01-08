@@ -256,7 +256,7 @@ export default function Loyalty() {
             transition={{ duration: 4, repeat: Infinity, delay: 1 }}
             className={cn(
               "absolute top-1/3 bg-green-500 text-white px-5 py-3 rounded-xl shadow-2xl z-30",
-              isRtl ? "left-0 lg:left-[-48px]" : "-top-10 lg:-right-12"
+              isRtl ? "left-0 lg:left-[-48px]" : "-top-10 lg:top-100  lg:-right-12"
             )}
           >
             <div className="text-2xl font-bold">+45%</div>

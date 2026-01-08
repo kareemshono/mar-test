@@ -104,7 +104,7 @@ export async function generateMetadata({
     },
 
     // Optional: PWA manifest
-    manifest: "/images/site.webmanifest",
+    manifest: "/site.webmanifest",
   };
 }
 

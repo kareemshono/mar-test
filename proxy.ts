@@ -8,7 +8,7 @@ import { routing } from '@/i18n/routing';  // your existing config
 //  next-intl middleware
 const intlMiddleware = createMiddleware(routing);
 
-export default function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   // 1. Run next-intl first → handles locale detection, redirects, etc.
   const response = intlMiddleware(request);
 
@@ -46,8 +46,8 @@ export default function middleware(request: NextRequest) {
 // Single unified matcher – safe for both i18n and security headers
 export const config = {
   matcher: [
-    // Match all paths except Next.js internals & static assets
-    '/((?!_next/static|_next/image|favicon.ico|api|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
+   // Match all paths except internals
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
     // Include root and locale-prefixed paths for redirects
     '/',
     '/(ar|en)/:path*',

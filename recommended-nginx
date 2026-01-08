@@ -1,3 +1,11 @@
-add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'strict-dynamic'; style-src 'self'; object-src 'none'; ..." always;
+# Recommended strong static headers
+add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'strict-dynamic' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https:; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests; block-all-mixed-content;" always;
+
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-# etc.
+
+add_header Cross-Origin-Opener-Policy "same-origin" always;
+
+# Optional extras for good measure (common best practices)
+add_header X-Content-Type-Options "nosniff" always;
+add_header X-Frame-Options "DENY" always;  # frame-ancestors in CSP already covers this, but extra layer
+add_header Referrer-Policy "strict-origin-when-cross-origin" always;
