@@ -1,19 +1,26 @@
-// middleware.ts (root level!)
+// proxy.ts (root level!)
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';  // your existing config
 
-//  next-intl middleware
+// next-intl middleware
 const intlMiddleware = createMiddleware(routing);
 
 export default function proxy(request: NextRequest) {
-  // 1. Run next-intl first → handles locale detection, redirects, etc.
-// Skip all internal Next.js paths – this prevents headers from breaking the optimizer
-  if (request.nextUrl.pathname.startsWith('/_next') || request.nextUrl.pathname.startsWith('/api')) {
-    return NextResponse.next();
+  const pathname = request.nextUrl.pathname;
+
+  // Early skip for all internal Next.js paths – prevents headers from applying to optimizer
+  if (
+    pathname.startsWith('/_next') ||  // Covers _next/image, _next/static, etc.
+    pathname.startsWith('/api') ||     // Skip APIs if needed
+    pathname.includes('/favicon.ico')  // Or other statics
+  ) {
+    return NextResponse.next();  // No intl or headers – just serve as-is
   }
+
+  // 1. Run next-intl first → handles locale detection, redirects, etc.
   const response = intlMiddleware(request);
 
   // If next-intl already returned a redirect/response, just return it
@@ -21,18 +28,18 @@ export default function proxy(request: NextRequest) {
     // 2. Now we add security headers to whatever response came back
     const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
-        const csp = `
-        default-src 'self';
-        script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-        style-src 'self' 'nonce-${nonce}';  // ← removed 'unsafe-inline'
-        img-src 'self' blob: data: https:;
-        font-src 'self';
-        object-src 'none';
-        base-uri 'self';
-        frame-ancestors 'none';
-        upgrade-insecure-requests;
-        block-all-mixed-content;
-      `.replace(/\s{2,}/g, ' ').trim();
+    const csp = `
+      default-src 'self';
+      script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
+      style-src 'self' 'nonce-${nonce}';  // ← removed 'unsafe-inline'
+      img-src 'self' blob: data: https:;
+      font-src 'self';
+      object-src 'none';
+      base-uri 'self';
+      frame-ancestors 'none';
+      upgrade-insecure-requests;
+      block-all-mixed-content;
+    `.replace(/\s{2,}/g, ' ').trim();
 
     // Pass nonce to Next.js internals
     response.headers.set('x-nonce', nonce);
@@ -47,12 +54,17 @@ export default function proxy(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Single unified matcher – safe for both i18n and security headers
+// Official matcher from Next.js docs – excludes internals, prefetch, and data requests
 export const config = {
   matcher: [
-   // Match all paths except internals
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
-    // Include root and locale-prefixed paths for redirects
+    {
+      source: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+      missing: [
+        { type: 'header', key: 'next-router-prefetch' },
+        { type: 'header', key: 'purpose', value: 'prefetch' },
+      ],
+    },
+    // Keep your i18n roots (but they'll be covered by the main matcher)
     '/',
     '/(ar|en)/:path*',
   ],
